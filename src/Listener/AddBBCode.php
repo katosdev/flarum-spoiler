@@ -5,7 +5,7 @@
 
 namespace Sijad\Spoiler\Alert\Listener;
 
-use Flarum\Event\ConfigureFormatter;
+use Flarum\Formatter\Event\Configuring;
 use Illuminate\Contracts\Events\Dispatcher;
 
 class AddBBCode
@@ -15,13 +15,13 @@ class AddBBCode
      */
     public function subscribe(Dispatcher $events)
     {
-        $events->listen(ConfigureFormatter::class, [$this, 'addBBCode']);
+        $events->listen(Configuring::class, [$this, 'addBBCode']);
     }
 
     /**
-     * @param ConfigureFormatter $event
+     * @param Configuring $event
      */
-    public function addBBCode(ConfigureFormatter $event)
+    public function addBBCode(Configuring $event)
     {
         // $event->configurator->BBCodes->addFromRepository('SPOILER');
 
